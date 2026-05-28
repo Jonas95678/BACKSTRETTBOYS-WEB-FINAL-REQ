@@ -506,81 +506,243 @@ body {
   background: linear-gradient(180deg, var(--navy) 0%, var(--deep) 100%);
 }
 
-.contents_history .container {
-  max-width: 900px;
+/* History page header */
+.history-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  padding: 0 2rem;
+}
+
+.history-header h1 {
+  font-family: var(--font-head);
+  font-size: 3rem;
+  color: var(--gold-light);
+  margin-bottom: 0.8rem;
+  text-shadow: 0 2px 30px rgba(201,168,76,0.4);
+  letter-spacing: -0.02em;
+}
+
+.history-header p {
+  font-size: 1.1rem;
+  color: var(--muted);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+/* Timeline container */
+.timeline-container {
+  max-width: 1000px;
   margin: 0 auto;
   position: relative;
+  padding: 2rem 0;
 }
 
-/* Vertical timeline line */
-.contents_history .container::before {
-  content: '';
+/* Central vertical line */
+.timeline-line {
   position: absolute;
-  left: 50px;
+  left: 50%;
+  transform: translateX(-50%);
   top: 0;
   bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--gold), transparent);
-  opacity: 0.4;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--gold), var(--gold-light), var(--gold));
+  border-radius: 3px;
+  box-shadow: 0 0 20px rgba(201,168,76,0.4);
 }
 
-/* All year cards share the same base */
-[class$="_card"] {
+/* Timeline items */
+.timeline-item {
   position: relative;
-  padding: 1.8rem 1.8rem 1.8rem 5.5rem;
-  margin-bottom: 1.8rem;
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  width: 50%;
+  padding: 2rem 3rem;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
 }
 
-[class$="_card"]:hover {
-  transform: translateX(10px);
-  border-color: rgba(201,168,76,0.6);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.4), 0 0 20px rgba(201,168,76,0.08);
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Gold dot on the timeline */
-[class$="_card"]::before {
-  content: '';
+.timeline-item:nth-child(2) { animation-delay: 0.1s; }
+.timeline-item:nth-child(3) { animation-delay: 0.2s; }
+.timeline-item:nth-child(4) { animation-delay: 0.3s; }
+.timeline-item:nth-child(5) { animation-delay: 0.4s; }
+.timeline-item:nth-child(6) { animation-delay: 0.5s; }
+.timeline-item:nth-child(7) { animation-delay: 0.6s; }
+.timeline-item:nth-child(8) { animation-delay: 0.7s; }
+.timeline-item:nth-child(9) { animation-delay: 0.8s; }
+.timeline-item:nth-child(10) { animation-delay: 0.9s; }
+.timeline-item:nth-child(11) { animation-delay: 1.0s; }
+.timeline-item:nth-child(12) { animation-delay: 1.1s; }
+.timeline-item:nth-child(13) { animation-delay: 1.2s; }
+.timeline-item:nth-child(14) { animation-delay: 1.3s; }
+.timeline-item:nth-child(15) { animation-delay: 1.4s; }
+.timeline-item:nth-child(16) { animation-delay: 1.5s; }
+.timeline-item:nth-child(17) { animation-delay: 1.6s; }
+.timeline-item:nth-child(18) { animation-delay: 1.7s; }
+
+/* Left and right positioning */
+.timeline-item.left {
+  left: 0;
+  text-align: right;
+  padding-right: 4rem;
+}
+
+.timeline-item.right {
+  left: 50%;
+  text-align: left;
+  padding-left: 4rem;
+}
+
+/* Timeline dots */
+.timeline-dot {
   position: absolute;
-  left: -1.4rem;
   top: 50%;
   transform: translateY(-50%);
-  width: 12px;
-  height: 12px;
+  width: 20px;
+  height: 20px;
   background: var(--gold);
+  border: 4px solid var(--navy);
   border-radius: 50%;
-  box-shadow: 0 0 15px rgba(201,168,76,0.7);
+  z-index: 2;
+  box-shadow: 0 0 20px rgba(201,168,76,0.8), inset 0 0 10px rgba(255,255,255,0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-[class$="_card"]:hover::before {
-  transform: translateY(-50%) scale(1.2);
-  box-shadow: 0 0 25px rgba(201,168,76,0.9);
+.timeline-item.left .timeline-dot {
+  right: -10px;
 }
 
-[class$="_card"] h1 {
-  font-family: var(--font-head);
-  font-size: 1.8rem;
-  color: var(--gold);
-  margin-bottom: 0.5rem;
-  line-height: 1;
+.timeline-item.right .timeline-dot {
+  left: -10px;
+}
+
+.timeline-item:hover .timeline-dot {
+  transform: translateY(-50%) scale(1.3);
+  box-shadow: 0 0 30px rgba(201,168,76,1), inset 0 0 15px rgba(255,255,255,0.5);
+}
+
+/* Timeline content cards */
+.timeline-content {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.8rem 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.timeline-content::before {
+  content: '';
   position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 3.5rem;
-  text-align: right;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.timeline-item.left .timeline-content::before {
+  transform-origin: right;
+}
+
+.timeline-content:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 30px rgba(201,168,76,0.15);
+  border-color: rgba(201,168,76,0.6);
+}
+
+.timeline-content:hover::before {
+  transform: scaleX(1);
+}
+
+/* Year badge */
+.year-badge {
+  display: inline-block;
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--gold);
+  background: rgba(201,168,76,0.1);
+  padding: 0.4rem 1.2rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  margin-bottom: 0.8rem;
+  text-shadow: 0 0 15px rgba(201,168,76,0.4);
+}
+
+.timeline-item.left .year-badge {
+  margin-left: 0;
+}
+
+.timeline-item.right .year-badge {
+  margin-right: 0;
+}
+
+/* Content headings */
+.timeline-content h2 {
+  font-family: var(--font-head);
+  font-size: 1.4rem;
+  color: var(--gold-light);
+  margin-bottom: 0.8rem;
   font-weight: 700;
 }
 
-[class$="_card"] p {
+.timeline-content p {
   font-size: 0.95rem;
   color: var(--muted);
   line-height: 1.8;
   margin: 0;
+}
+
+/* Era-specific styling */
+.era-90s {
+  background: linear-gradient(135deg, rgba(201,168,76,0.05) 0%, var(--card-bg) 100%);
+}
+
+.era-00s {
+  background: linear-gradient(135deg, rgba(30,58,95,0.1) 0%, var(--card-bg) 100%);
+}
+
+.era-10s {
+  background: linear-gradient(135deg, rgba(201,168,76,0.03) 0%, var(--card-bg) 100%);
+}
+
+.era-20s {
+  background: linear-gradient(135deg, rgba(232,201,110,0.05) 0%, var(--card-bg) 100%);
+}
+
+/* Highlight important milestones */
+.timeline-content.highlight {
+  border: 1px solid rgba(201,168,76,0.5);
+  box-shadow: 0 4px 20px rgba(201,168,76,0.1);
+}
+
+.timeline-content.highlight::after {
+  content: '★';
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.2rem;
+  color: var(--gold);
+  opacity: 0.6;
+}
+
+.timeline-item.left .timeline-content.highlight::after {
+  right: auto;
+  left: 1rem;
 }
 
 /* ── FOOTER ─────────────────────────────────── */
@@ -643,8 +805,33 @@ footer > p {
 
   .group_card h1 { font-size: 1.8rem; }
   .topSongs_text h1 { font-size: 1.8rem; }
-
-  .contents_history .container::before { left: 30px; }
-  [class$="_card"] { padding-left: 4rem; }
-  [class$="_card"] h1 { font-size: 1.4rem; width: 2.5rem; }
+  
+  /* History page responsive */
+  .history-header h1 { font-size: 2rem; }
+  .timeline-line { left: 20px; }
+  .timeline-item { width: 100%; padding-left: 3.5rem; padding-right: 2rem; }
+  .timeline-item.left,
+  .timeline-item.right {
+    left: 0;
+    text-align: left;
+    padding-left: 3.5rem;
+    padding-right: 2rem;
+  }
+  .timeline-item.left .timeline-dot,
+  .timeline-item.right .timeline-dot {
+    left: 10px;
+    right: auto;
+  }
+  .timeline-item.left .timeline-content::before {
+    transform-origin: left;
+  }
+  .timeline-item.left .year-badge,
+  .timeline-item.right .year-badge {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .timeline-item.left .timeline-content.highlight::after {
+    right: 1rem;
+    left: auto;
+  }
 }
