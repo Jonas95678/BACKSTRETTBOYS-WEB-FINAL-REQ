@@ -835,3 +835,608 @@ footer > p {
     left: auto;
   }
 }
+
+/* ════════════════════════════════════════════════
+   NEW HOME PAGE STYLES - Retro BSB Theme
+   ════════════════════════════════════════════════ */
+
+/* Retro Background Effects */
+.retro-bg-stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(201,168,76,0.3), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.2), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(201,168,76,0.25), transparent),
+    radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.15), transparent),
+    radial-gradient(1px 1px at 230px 80px, rgba(201,168,76,0.2), transparent),
+    radial-gradient(2px 2px at 300px 150px, rgba(255,255,255,0.2), transparent);
+  background-size: 350px 200px;
+  animation: twinkle 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.6; }
+}
+
+.retro-bg-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Enhanced Logo Styling */
+.bsb-logo-text {
+  font-family: 'Cinzel', var(--font-head);
+  font-weight: 900;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 20px rgba(201,168,76,0.5);
+}
+
+.bsb-logo-accent {
+  font-family: 'Cinzel', var(--font-head);
+  font-weight: 900;
+  color: var(--gold-light);
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 25px rgba(201,168,76,0.7);
+  margin-left: 0.3rem;
+}
+
+/* Hero Banner Enhancements */
+.hero-retro-frame {
+  position: relative;
+  width: 100%;
+  max-height: 620px;
+  overflow: hidden;
+}
+
+.hero-corner {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--gold);
+  z-index: 10;
+  box-shadow: 0 0 15px rgba(201,168,76,0.6);
+}
+
+.hero-corner.top-left {
+  top: 15px;
+  left: 15px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.hero-corner.top-right {
+  top: 15px;
+  right: 15px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.hero-corner.bottom-left {
+  bottom: 15px;
+  left: 15px;
+  border-right: none;
+  border-top: none;
+}
+
+.hero-corner.bottom-right {
+  bottom: 15px;
+  right: 15px;
+  border-left: none;
+  border-top: none;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 30%,
+    rgba(10,14,26,0.5) 70%,
+    var(--navy) 100%
+  );
+  z-index: 5;
+}
+
+.hero-title-section {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 15;
+  width: 90%;
+  max-width: 800px;
+}
+
+.hero-main-title {
+  font-family: 'Cinzel', var(--font-head);
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--white);
+  text-shadow: 
+    0 0 30px rgba(201,168,76,0.8),
+    0 0 60px rgba(201,168,76,0.5),
+    2px 2px 4px rgba(0,0,0,0.8);
+  letter-spacing: 0.15em;
+  margin-bottom: 0.5rem;
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+  from {
+    text-shadow: 
+      0 0 30px rgba(201,168,76,0.8),
+      0 0 60px rgba(201,168,76,0.5),
+      2px 2px 4px rgba(0,0,0,0.8);
+  }
+  to {
+    text-shadow: 
+      0 0 40px rgba(201,168,76,1),
+      0 0 80px rgba(201,168,76,0.7),
+      2px 2px 4px rgba(0,0,0,0.8);
+  }
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--gold-light);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+.hero-decorative-line {
+  width: 200px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 1rem auto 0;
+}
+
+/* Welcome Section */
+.welcome-section {
+  background: linear-gradient(135deg, var(--deep) 0%, var(--navy) 100%);
+  padding: 4rem 2rem;
+  text-align: center;
+  position: relative;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.welcome-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.welcome-badge {
+  display: inline-block;
+  background: rgba(201,168,76,0.15);
+  border: 1px solid var(--gold);
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+.badge-star {
+  color: var(--gold);
+  margin: 0 0.3rem;
+}
+
+.welcome-title {
+  font-family: 'Cinzel', var(--font-head);
+  font-size: 2.2rem;
+  color: var(--white);
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 20px rgba(201,168,76,0.3);
+}
+
+.welcome-text {
+  font-size: 1.05rem;
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
+}
+
+.welcome-signature {
+  font-family: var(--font-head);
+  font-style: italic;
+  color: var(--gold);
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+}
+
+/* Jukebox Music Section */
+.jukebox-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.jukebox-lights {
+  flex: 1;
+  max-width: 150px;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--gold), 
+    var(--gold-light), 
+    var(--gold), 
+    transparent);
+  animation: lightPulse 2s ease-in-out infinite;
+}
+
+@keyframes lightPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.jukebox-title {
+  font-family: 'Cinzel', var(--font-head);
+  font-size: 1.5rem;
+  color: var(--gold-light);
+  text-shadow: 0 0 15px rgba(201,168,76,0.5);
+  letter-spacing: 0.1em;
+}
+
+.music_container a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 1rem 1.5rem;
+  margin-bottom: 0.8rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.music_container a:hover {
+  background: rgba(201,168,76,0.15);
+  border-color: var(--gold);
+  transform: translateX(10px);
+  box-shadow: 0 4px 20px rgba(201,168,76,0.2);
+}
+
+.song-number {
+  font-family: 'Cinzel', var(--font-head);
+  font-size: 1.2rem;
+  color: var(--gold);
+  font-weight: 700;
+  min-width: 40px;
+}
+
+.song-title {
+  flex: 1;
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  color: var(--white);
+  font-weight: 700;
+  text-align: center;
+}
+
+.song-year {
+  font-size: 0.85rem;
+  color: var(--gold-light);
+  background: rgba(201,168,76,0.2);
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+.music-decoration {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
+  color: var(--gold);
+  letter-spacing: 1rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Previews Section Enhancement */
+.previews-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.previews-main-title {
+  font-family: 'Cinzel', var(--font-head);
+  font-size: 2rem;
+  color: var(--gold-light);
+  text-shadow: 0 2px 20px rgba(201,168,76,0.4);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.previews-decorative-line {
+  width: 150px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 1rem auto 0;
+}
+
+.preview-card {
+  position: relative;
+}
+
+.card-vintage-frame {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: var(--radius);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.preview-card:hover .card-vintage-frame {
+  border-color: var(--gold);
+  box-shadow: 0 0 30px rgba(201,168,76,0.2);
+}
+
+.card-corner-tl, .card-corner-tr, .card-corner-bl, .card-corner-br {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 2px solid var(--gold);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.card-corner-tl {
+  top: 10px;
+  left: 10px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.card-corner-tr {
+  top: 10px;
+  right: 10px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.card-corner-bl {
+  bottom: 10px;
+  left: 10px;
+  border-right: none;
+  border-top: none;
+}
+
+.card-corner-br {
+  bottom: 10px;
+  right: 10px;
+  border-left: none;
+  border-top: none;
+}
+
+.preview-card:hover .card-corner-tl,
+.preview-card:hover .card-corner-tr,
+.preview-card:hover .card-corner-bl,
+.preview-card:hover .card-corner-br {
+  opacity: 1;
+  width: 20px;
+  height: 20px;
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  filter: drop-shadow(0 0 10px rgba(201,168,76,0.5));
+}
+
+/* Retro Divider */
+.retro-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 3rem 2rem;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.05), transparent);
+}
+
+.divider-star {
+  color: var(--gold);
+  font-size: 1.2rem;
+  text-shadow: 0 0 10px rgba(201,168,76,0.6);
+}
+
+.divider-line {
+  flex: 1;
+  max-width: 150px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.divider-text {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Member Highlights */
+.member-highlights {
+  padding: 4rem 2rem;
+  background: linear-gradient(180deg, var(--navy) 0%, var(--deep) 100%);
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+.members-title {
+  font-family: 'Cinzel', var(--font-head);
+  font-size: 1.8rem;
+  color: var(--gold-light);
+  margin-bottom: 2.5rem;
+  text-shadow: 0 2px 15px rgba(201,168,76,0.4);
+  letter-spacing: 0.1em;
+}
+
+.members-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.member-mini-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.5rem;
+  background: rgba(201,168,76,0.05);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  min-width: 140px;
+}
+
+.member-mini-card:hover {
+  background: rgba(201,168,76,0.12);
+  border-color: var(--gold);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(201,168,76,0.2);
+}
+
+.member-initial {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', var(--font-head);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--navy);
+  box-shadow: 0 4px 15px rgba(201,168,76,0.5);
+}
+
+.member-name {
+  font-size: 0.85rem;
+  color: var(--white);
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+/* Footer Enhancements */
+.footer-retro-branding {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.footer-bsb-logo {
+  font-family: 'Cinzel', var(--font-head);
+  font-size: 1.5rem;
+  color: var(--gold-light);
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 20px rgba(201,168,76,0.5);
+  margin-bottom: 0.3rem;
+}
+
+.footer-tagline {
+  font-size: 0.85rem;
+  color: var(--muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.footer-decorative-line {
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 1rem 0;
+}
+
+.fan-message {
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* Responsive adjustments for new elements */
+@media (max-width: 640px) {
+  .hero-main-title {
+    font-size: 2rem;
+    letter-spacing: 0.08em;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.85rem;
+  }
+  
+  .welcome-title {
+    font-size: 1.6rem;
+  }
+  
+  .jukebox-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .jukebox-lights {
+    max-width: 100px;
+  }
+  
+  .music_container a {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  
+  .song-number {
+    min-width: auto;
+  }
+  
+  .members-grid {
+    gap: 1rem;
+  }
+  
+  .member-mini-card {
+    min-width: 100px;
+    padding: 1rem;
+  }
+  
+  .retro-divider {
+    flex-wrap: wrap;
+  }
+  
+  .divider-line {
+    max-width: 80px;
+  }
+}
