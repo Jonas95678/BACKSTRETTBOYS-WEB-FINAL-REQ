@@ -204,6 +204,34 @@ body::after {
   opacity: 1;
 }
 
+/* Login button in navigation */
+.navigators nav a.login_btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: var(--white);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  padding: 0.6rem 1.5rem;
+  border-radius: 25px;
+  margin-left: 1rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s ease;
+}
+
+.navigators nav a.login_btn::before,
+.navigators nav a.login_btn::after {
+  display: none;
+}
+
+.navigators nav a.login_btn:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+  color: var(--white);
+  text-shadow: none;
+}
+
 /* ── HOME PAGE ──────────────────────────────── */
 .contents_home {
   flex: 1;

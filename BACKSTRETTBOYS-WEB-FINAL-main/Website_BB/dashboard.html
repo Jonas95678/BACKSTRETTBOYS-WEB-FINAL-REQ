@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Backstreet Boys Fan Club</title>
+    <link rel="stylesheet" href="website.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #e4e4e4;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Subtle Background */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 30% 20%, rgba(76, 29, 149, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Header */
+        .dashboard-header {
+            background: rgba(30, 30, 50, 0.7);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+            backdrop-filter: blur(20px);
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #a78bfa 0%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .welcome-text {
+            font-family: 'Inter', sans-serif;
+            color: #9ca3af;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .logout-btn {
+            background: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            letter-spacing: 0.3px;
+            box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+        }
+
+        .logout-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        }
+
+        /* Main Container */
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 24px;
+            padding: 24px 40px;
+            position: relative;
+            z-index: 10;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: rgba(30, 30, 50, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+            height: fit-content;
+            position: relative;
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 28px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            background: linear-gradient(135deg, #a78bfa 0%, #60a5fa 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(167, 139, 250, 0.3);
+        }
+
+        .profile-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .profile-member {
+            font-family: 'Inter', sans-serif;
+            color: #9ca3af;
+            font-size: 0.85rem;
+        }
+
+        .nav-menu {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 8px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: transparent;
+            border: none;
+            border-radius: 10px;
+            color: #d1d5db;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: rgba(139, 92, 246, 0.1);
+            color: #a78bfa;
+        }
+
+        .nav-link i {
+            color: #9ca3af;
+            font-size: 1.1rem;
+            width: 20px;
+        }
+
+        .nav-link:hover i,
+        .nav-link.active i {
+            color: #a78bfa;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .content-card {
+            background: rgba(30, 30, 50, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 28px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title i {
+            color: #a78bfa;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+        }
+
+        .stat-card {
+            background: rgba(139, 92, 246, 0.08);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            background: rgba(139, 92, 246, 0.12);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            color: #a78bfa;
+            margin-bottom: 12px;
+        }
+
+        .stat-value {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .stat-label {
+            font-family: 'Inter', sans-serif;
+            color: #9ca3af;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Activity Table */
+        .activity-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        .activity-table th,
+        .activity-table td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .activity-table th {
+            font-family: 'Inter', sans-serif;
+            color: #9ca3af;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .activity-table td {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: #d1d5db;
+        }
+
+        .activity-table tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-active {
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .status-pending {
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .action-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+        }
+
+        .action-btn.delete {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        }
+
+        .action-btn.delete:hover {
+            box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .dashboard-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-header {
+                flex-direction: column;
+                gap: 16px;
+                padding: 16px 20px;
+            }
+
+            .dashboard-container {
+                padding: 16px 20px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .activity-table {
+                font-size: 0.85rem;
+            }
+
+            .activity-table th,
+            .activity-table td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+
+    <!-- Header -->
+    <header class="dashboard-header">
+        <h1 class="logo"><span>Backstreet Boys</span></h1>
+        <div class="user-info">
+            <span class="welcome-text">Welcome back!</span>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Dashboard -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="profile-section">
+                <div class="profile-avatar">BS</div>
+                <h2 class="profile-name">Backstreet Fan</h2>
+                <p class="profile-member">Favorite: Nick Carter</p>
+            </div>
+
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-user"></i>
+                        <span>My Profile</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-music"></i>
+                        <span>Favorites</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-calendar"></i>
+                        <span>Events</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Stats Overview -->
+            <div class="content-card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <i class="fas fa-chart-line"></i>
+                        Account Overview
+                    </h2>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="stat-value">47</div>
+                        <div class="stat-label">Favorite Songs</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-ticket-alt"></i>
+                        </div>
+                        <div class="stat-value">3</div>
+                        <div class="stat-label">Concert Tickets</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="stat-value">128</div>
+                        <div class="stat-label">Forum Posts</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-value">2,450</div>
+                        <div class="stat-label">Fan Points</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="content-card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <i class="fas fa-history"></i>
+                        Recent Activity
+                    </h2>
+                    <button class="action-btn">
+                        <i class="fas fa-plus"></i> Add New
+                    </button>
+                </div>
+
+                <table class="activity-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="activityTableBody">
+                        <tr>
+                            <td>#001</td>
+                            <td><i class="fas fa-music" style="color: #a78bfa;"></i> Song</td>
+                            <td>Added "I Want It That Way" to favorites</td>
+                            <td>2024-01-15</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>
+                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#002</td>
+                            <td><i class="fas fa-ticket-alt" style="color: #f59e0b;"></i> Event</td>
+                            <td>Registered for Virtual Meet & Greet</td>
+                            <td>2024-01-14</td>
+                            <td><span class="status-badge status-pending">Pending</span></td>
+                            <td>
+                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#003</td>
+                            <td><i class="fas fa-comment" style="color: #22c55e;"></i> Forum</td>
+                            <td>Posted in "Best Album" discussion</td>
+                            <td>2024-01-13</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>
+                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="content-card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <i class="fas fa-bolt"></i>
+                        Quick Actions
+                    </h2>
+                </div>
+
+                <div class="stats-grid">
+                    <button class="stat-card" style="cursor: pointer;">
+                        <div class="stat-icon">
+                            <i class="fas fa-plus-circle"></i>
+                        </div>
+                        <div class="stat-label">Add Favorite</div>
+                    </button>
+
+                    <button class="stat-card" style="cursor: pointer;">
+                        <div class="stat-icon">
+                            <i class="fas fa-upload"></i>
+                        </div>
+                        <div class="stat-label">Upload Content</div>
+                    </button>
+
+                    <button class="stat-card" style="cursor: pointer;">
+                        <div class="stat-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="stat-label">Send Message</div>
+                    </button>
+
+                    <button class="stat-card" style="cursor: pointer;">
+                        <div class="stat-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <div class="stat-label">Downloads</div>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Placeholder functions for future CRUD integration
+        function logout() {
+            console.log('Logout initiated');
+            // TODO: Integrate logout functionality
+            alert('Logout functionality will be integrated soon!');
+            window.location.href = 'login.html';
+        }
+
+        // Example CRUD operations placeholders
+        const crudOperations = {
+            create: function(data) {
+                console.log('CREATE operation:', data);
+                // TODO: Implement create functionality
+            },
+            read: function(id) {
+                console.log('READ operation:', id);
+                // TODO: Implement read functionality
+            },
+            update: function(id, data) {
+                console.log('UPDATE operation:', id, data);
+                // TODO: Implement update functionality
+            },
+            delete: function(id) {
+                console.log('DELETE operation:', id);
+                // TODO: Implement delete functionality
+            }
+        };
+
+        // Add event listeners to action buttons (for future CRUD)
+        document.querySelectorAll('.action-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (this.classList.contains('delete')) {
+                    const row = this.closest('tr');
+                    const id = row.cells[0].textContent;
+                    console.log('Delete requested for:', id);
+                    // TODO: Implement delete confirmation and action
+                } else {
+                    console.log('Edit requested');
+                    // TODO: Implement edit functionality
+                }
+            });
+        });
+    </script>
+</body>
+</html>
