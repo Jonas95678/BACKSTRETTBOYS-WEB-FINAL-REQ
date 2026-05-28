@@ -1440,3 +1440,264 @@ footer > p {
     max-width: 80px;
   }
 }
+
+/* ============================================
+   ABOUT PAGE RETRO ENHANCEMENTS
+   ============================================ */
+
+/* About page header */
+.about-page-header {
+  text-align: center;
+  padding: 3rem 2rem 2rem;
+  position: relative;
+}
+
+.page-title-frame {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  height: 100%;
+  pointer-events: none;
+}
+
+.frame-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--gold);
+}
+
+.frame-corner.top-left {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+
+.frame-corner.top-right {
+  top: 0;
+  right: 0;
+  border-left: none;
+  border-bottom: none;
+}
+
+.frame-corner.bottom-left {
+  bottom: 0;
+  left: 0;
+  border-right: none;
+  border-top: none;
+}
+
+.frame-corner.bottom-right {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+}
+
+.page-main-title {
+  font-family: 'Cinzel', var(--font-head);
+  font-size: 2.8rem;
+  color: var(--gold-light);
+  text-shadow: 0 2px 30px rgba(201,168,76,0.4);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+  font-size: 1rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+
+.page-decorative-line {
+  width: 150px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 1.5rem auto 0;
+}
+
+/* Vintage image frame */
+.vintage-image-frame {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.frame-corner-tl, .frame-corner-tr, .frame-corner-bl, .frame-corner-br {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--gold);
+}
+
+.frame-corner-tl {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+
+.frame-corner-tr {
+  top: 0;
+  right: 0;
+  border-left: none;
+  border-bottom: none;
+}
+
+.frame-corner-bl {
+  bottom: 0;
+  left: 0;
+  border-right: none;
+  border-top: none;
+}
+
+.frame-corner-br {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+}
+
+.about-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(201,168,76,0.1);
+  border: 1px solid var(--border);
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  margin: 1.5rem 0 1rem;
+}
+
+.badge-star {
+  color: var(--gold);
+  font-size: 1rem;
+}
+
+.about-badge span:nth-child(2) {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+.group_title {
+  font-family: 'Cinzel', var(--font-head);
+  font-size: 2rem;
+  color: var(--gold-light);
+  margin: 1rem 0;
+}
+
+.about-signature {
+  font-family: 'Playfair Display', var(--font-head);
+  font-style: italic;
+  color: var(--gold);
+  font-size: 1rem;
+  margin-top: 1.5rem;
+  letter-spacing: 0.1em;
+}
+
+/* Member numbers */
+.member-number {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-family: 'Cinzel', var(--font-head);
+  font-size: 2rem;
+  font-weight: 900;
+  color: rgba(201,168,76,0.2);
+  z-index: 3;
+}
+
+/* ============================================
+   TOP SONGS PAGE RETRO ENHANCEMENTS
+   ============================================ */
+
+.topsongs-page-header {
+  text-align: center;
+  padding: 3rem 2rem 2rem;
+  position: relative;
+}
+
+.album-year-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-family: 'Cinzel', var(--font-head);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--navy);
+  background: var(--gold);
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  z-index: 3;
+  box-shadow: 0 2px 10px rgba(201,168,76,0.4);
+}
+
+.album-year-badge.special {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  font-size: 1rem;
+  animation: pulse-gold 2s ease-in-out infinite;
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 2px 10px rgba(201,168,76,0.4); }
+  50% { box-shadow: 0 2px 20px rgba(201,168,76,0.7); }
+}
+
+.album-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  z-index: 3;
+  opacity: 0.8;
+}
+
+.tracklist {
+  padding: 0 1rem 1.2rem;
+}
+
+.tracklist p {
+  font-size: 0.82rem;
+  color: var(--muted);
+  padding: 0.2rem 0;
+  line-height: 1.5;
+  border-bottom: 1px dashed rgba(201,168,76,0.1);
+}
+
+.tracklist p:last-child {
+  border-bottom: none;
+}
+
+.highlight-album {
+  border: 2px solid rgba(201,168,76,0.5);
+  box-shadow: 0 0 30px rgba(201,168,76,0.15);
+}
+
+.highlight-album:hover {
+  box-shadow: 0 0 40px rgba(201,168,76,0.25), 0 12px 40px rgba(0,0,0,0.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .page-main-title {
+    font-size: 2rem;
+  }
+  
+  .about-groupIMG {
+    max-height: 350px;
+  }
+  
+  .member-number {
+    font-size: 1.5rem;
+  }
+}
